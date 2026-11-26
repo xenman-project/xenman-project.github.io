@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XenMan – XenServer management in the browser</title>
+  <meta name="description" content="XenMan is a modern web interface for XenServer and XCP-ng: pools, hosts, VMs, consoles, storage, networking, GPUs and updates – right in the browser.">
+  <meta property="og:title" content="XenMan – XenServer management in the browser">
+  <meta property="og:description" content="A modern web interface for XenServer and XCP-ng pools, hosts and VMs.">
+  <meta property="og:image" content="https://xenman-project.github.io/img/dashboard.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="XenMan home">
+        <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <span>xenman</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#install">Install</a>
+        <a href="#security">Security</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">For XenServer &amp; XCP-ng</p>
+          <h1>XenServer management, right in your browser</h1>
+          <p class="lead">XenMan manages pools, hosts and virtual machines from any browser – with consoles, storage, networking, GPUs and host updates. Many workflows follow XenCenter's, so it feels familiar from the first click.</p>
+          <div class="cta">
+            <a class="button primary" href="https://github.com/xenman-project/xenman/releases/latest">Download latest release</a>
+            <a class="button secondary" href="#install">Installation</a>
+          </div>
+          <p class="hero-note">Runs as a Docker container or as a ready-to-import XenServer appliance.</p>
+        </div>
+        <figure class="hero-shot">
+          <img src="img/dashboard.png" width="1440" height="900" alt="XenMan start page with resources, capacity, pools and XenServer updates">
+        </figure>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="wrap">
+        <h2>Everything for everyday administration</h2>
+        <p class="section-lead">From a single VM to several pools across sites – the tasks you do every day, without a Windows client.</p>
+        <div class="features">
+          <article class="feature">
+            <h3>Pools &amp; hosts</h3>
+            <p>Several pools at once, maintenance mode, a new pool coordinator, adding and removing servers, control domain memory and certificate pinning.</p>
+          </article>
+          <article class="feature">
+            <h3>Virtual machines</h3>
+            <p>Create, import (XVA), start, stop, migrate, copy and delete. Templates from VMs and snapshots; edit CPU, memory, disks, network and boot settings.</p>
+          </article>
+          <article class="feature">
+            <h3>Console in the browser</h3>
+            <p>VNC right in the browser with keyboard macros and clipboard paste. RDP files for Windows VMs with one click.</p>
+          </article>
+          <article class="feature">
+            <h3>Storage &amp; networking</h3>
+            <p>Create and repair SRs, scan iSCSI targets for IQNs and LUNs, reclaim space. Networks, bonds, VLANs and the management interface.</p>
+          </article>
+          <article class="feature">
+            <h3>Host updates</h3>
+            <p>Updates host by host: VMs moved away and back, restarts when XenServer asks, Workload Balancing paused meanwhile – and a mail when it's done.</p>
+          </article>
+          <article class="feature">
+            <h3>GPUs &amp; PVS-Accelerator</h3>
+            <p>Physical GPUs and vGPUs, placement policy and allowed types. Read caching for VMs streamed by Citrix Provisioning.</p>
+          </article>
+          <article class="feature">
+            <h3>Multi-site</h3>
+            <p>Pools at other sites behind NAT or a firewall's virtual IP – consoles and performance graphs keep working there too.</p>
+          </article>
+          <article class="feature">
+            <h3>Monitoring</h3>
+            <p>Performance graphs, alerts, events and an audit log of who did what. Syslog forwarding to your log server.</p>
+          </article>
+          <article class="feature">
+            <h3>Users &amp; roles</h3>
+            <p>Admin, Operator and Viewer roles, invitations by mail, two-factor sign-in and sign-in with Microsoft Entra ID.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots" class="section alt">
+      <div class="wrap">
+        <h2>A look inside</h2>
+        <p class="section-lead">Familiar from XenCenter, at home in the browser – in light and dark.</p>
+        <div class="gallery">
+          <figure><a href="img/pool.png"><img src="img/pool.png" width="1440" height="900" loading="lazy" alt="Pool overview with hosts and VMs"></a><figcaption>Pool overview</figcaption></figure>
+          <figure><a href="img/vm.png"><img src="img/vm.png" width="1440" height="900" loading="lazy" alt="Details of a virtual machine"></a><figcaption>A virtual machine</figcaption></figure>
+          <figure><a href="img/pool-memory.png"><img src="img/pool-memory.png" width="1440" height="900" loading="lazy" alt="Memory tab as in XenCenter"></a><figcaption>Memory, as in XenCenter</figcaption></figure>
+          <figure><a href="img/pool-updates.png"><img src="img/pool-updates.png" width="1440" height="900" loading="lazy" alt="XenServer updates per host"></a><figcaption>XenServer updates</figcaption></figure>
+          <figure><a href="img/pool-gpu.png"><img src="img/pool-gpu.png" width="1440" height="900" loading="lazy" alt="GPUs and vGPU capacity"></a><figcaption>GPUs and vGPU capacity</figcaption></figure>
+          <figure><a href="img/host-network.png"><img src="img/host-network.png" width="1440" height="900" loading="lazy" alt="Host networking with bonds and VLANs"></a><figcaption>Host networking</figcaption></figure>
+        </div>
+        <figure class="dark-shot">
+          <a href="img/dark-dashboard.png"><img src="img/dark-dashboard.png" width="1440" height="900" loading="lazy" alt="XenMan start page in the dark theme"></a>
+          <figcaption>Dark theme</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2>Is it production-ready?</h2>
+          <p>Yes. The core of XenMan has been running in a real production environment for over eight months. New features keep coming, but the foundation is stable.</p>
+          <p>XenMan focuses on everyday pool and VM administration. A few specialised tasks are not included yet – keep XenCenter at hand for those.</p>
+        </div>
+        <div class="card">
+          <h3>Not yet included</h3>
+          <ul class="tags">
+            <li>HA configuration</li>
+            <li>GFS2 &amp; pool clustering</li>
+            <li>OVF import</li>
+            <li>Cross-pool storage migration</li>
+            <li>vApps</li>
+            <li>Disaster recovery</li>
+            <li>Active Directory</li>
+            <li>Server Status Reports</li>
+            <li>Rolling Pool Upgrade</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="install" class="section alt">
+      <div class="wrap">
+        <h2>Get started in minutes</h2>
+        <p class="section-lead">Pick what fits your environment. Sign in with <code>admin</code> / <code>admin</code> – XenMan asks for a new password first.</p>
+        <div class="install">
+          <article class="card">
+            <h3>Appliance</h3>
+            <p>A ready-to-import XenServer VM: Debian 13 with XenMan, as a single <code>.xva</code> file from the releases.</p>
+            <pre><code>xe vm-import filename=xenman-appliance-&lt;version&gt;.xva</code></pre>
+            <p class="small">Or in XenCenter under <em>File → Import</em>. Start the VM; its console shows the address. Updates come as signed packages, Debian security updates install on their own.</p>
+            <a class="button primary" href="https://github.com/xenman-project/xenman/releases/latest">Download appliance</a>
+          </article>
+          <article class="card">
+            <h3>Docker</h3>
+            <p>Runs the published image <code>ghcr.io/xenman-project/xenman</code>, data stays in a volume.</p>
+            <pre><code>curl -O https://raw.githubusercontent.com/xenman-project/xenman/main/docker-compose.yml
+docker compose up -d</code></pre>
+            <p class="small">Then open <code>https://&lt;host&gt;:3001</code>. Port 3000 only redirects there.</p>
+            <a class="button secondary" href="https://github.com/xenman-project/xenman#docker">Docker details</a>
+          </article>
+          <article class="card">
+            <h3>From source</h3>
+            <p>Node.js 24 or newer and a XenServer or XCP-ng host.</p>
+            <pre><code>git clone https://github.com/xenman-project/xenman.git
+cd xenman
+npm install
+npm run build
+npm start</code></pre>
+            <a class="button secondary" href="https://github.com/xenman-project/xenman#getting-started">Read the README</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section">
+      <div class="wrap">
+        <h2>Built for production infrastructure</h2>
+        <p class="section-lead">A tool that manages your hypervisors has to be careful. XenMan is.</p>
+        <div class="features">
+          <article class="feature">
+            <h3>HTTPS only</h3>
+            <p>A certificate is created on first start, or bring your own. Plain HTTP redirects, responses carry HSTS.</p>
+          </article>
+          <article class="feature">
+            <h3>Pinned host certificates</h3>
+            <p>Like SSH host keys: XenMan only talks to hosts presenting a certificate the pool trusts – and tells admins when one changes.</p>
+          </article>
+          <article class="feature">
+            <h3>Encrypted secrets</h3>
+            <p>XenServer and mail passwords are stored AES-256-GCM encrypted. On the appliance the key is sealed to the machine (and its TPM).</p>
+          </article>
+          <article class="feature">
+            <h3>Roles &amp; two-factor sign-in</h3>
+            <p>Admin, Operator and Viewer, per pool. Authenticator apps, optionally required – or Microsoft Entra ID with its MFA.</p>
+          </article>
+          <article class="feature">
+            <h3>Audit log</h3>
+            <p>Every action is recorded with its user, so you always know who did what, and when.</p>
+          </article>
+          <article class="feature">
+            <h3>Sessions stay on the server</h3>
+            <p>The browser never sees the pool's XenServer session – only a handle that works through XenMan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap split">
+        <div>
+          <h2>Built with AI</h2>
+          <p>XenMan is developed with an AI coding assistant: much of the code, the tests and the documentation were written by AI, directed by its maintainers and tested on real XenServer pools. Where XenMan behaves like XenCenter, that behaviour is taken from XenAdmin's published source rather than guessed.</p>
+          <p>As with any tool that manages production infrastructure, try it on a test pool first.</p>
+        </div>
+        <div class="card stack">
+          <h3>Under the hood</h3>
+          <ul class="list">
+            <li>Next.js 16, React 19, TypeScript</li>
+            <li>Tailwind CSS, Radix UI, shadcn/ui</li>
+            <li>XenAPI via JSON-RPC over HTTPS</li>
+            <li>noVNC for the console</li>
+          </ul>
+          <a class="button secondary" href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          <span>xenman</span>
+        </a>
+        <p class="small">Free to use under the MIT License with the Commons Clause: use, change and share it – just don't sell it. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries; Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+</body>
+</html>

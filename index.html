@@ -38,9 +38,13 @@
           <h1>XenServer management, right in your browser</h1>
           <p class="lead">XenMan manages pools, hosts and virtual machines from any browser – with consoles, storage, networking, GPUs and host updates. Many workflows follow XenCenter's, so it feels familiar from the first click.</p>
           <div class="cta">
-            <a class="button primary" href="https://github.com/xenman-project/xenman/releases/latest">Download latest release</a>
+            <a class="button primary" id="download-stable" href="https://github.com/xenman-project/xenman/releases/latest">Download latest release</a>
             <a class="button secondary" href="#install">Installation</a>
           </div>
+          <p class="rc" id="download-rc" hidden>
+            <a class="button rc-button" href="https://github.com/xenman-project/xenman/releases"><span class="rc-tag">Preview</span> <span id="download-rc-label">Release candidate</span></a>
+            <span class="rc-note">The next version early – best on a test pool.</span>
+          </p>
           <p class="hero-note">Runs as a Docker container or as a ready-to-import XenServer appliance.</p>
         </div>
         <figure class="hero-shot">
@@ -243,5 +247,6 @@ npm start</code></pre>
       <p class="small trademark">XenMan is an independent project and not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries; Xen is a trademark of the Linux Foundation.</p>
     </div>
   </footer>
+  <script src="releases.js" defer></script>
 </body>
 </html>

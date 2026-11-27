@@ -7,7 +7,7 @@ export const VERSION = "1.0.5";
 
 const note = (t) => `<p class="note"><strong>Note:</strong> ${t}</p>`;
 const important = (t) => `<p class="important"><strong>Important:</strong> ${t}</p>`;
-const fig = (src, alt) => `<figure><img src="img/${src}" alt="${alt}" loading="lazy"><figcaption>${alt}</figcaption></figure>`;
+const fig = (src, alt) => `<figure><a class="zoom" href="img/${src}" title="Enlarge"><img src="img/${src}" alt="${alt}" loading="lazy"></a><figcaption>${alt}</figcaption></figure>`;
 
 export const pages = [
   {

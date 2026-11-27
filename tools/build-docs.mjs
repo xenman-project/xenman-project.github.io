@@ -93,6 +93,7 @@ function page(p, i) {
     </div>
   </footer>
   <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+  <script src="docs.js" defer></script>
 </body>
 </html>
 `;

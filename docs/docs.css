@@ -86,3 +86,17 @@ ol.steps li { margin: 8px 0; padding-left: 4px; }
   .doc-main h1 { font-size: 1.6rem; }
   .doc-main table { display: block; overflow-x: auto; }
 }
+
+/* Screenshots: click to enlarge (docs.js) */
+.doc-main a.zoom { display: block; cursor: zoom-in; }
+.doc-main a.zoom img { transition: box-shadow 0.15s; }
+.doc-main a.zoom:hover img { box-shadow: 0 0 0 2px var(--petrol-500); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px; padding: 24px;
+  background: rgb(5 15 18 / 88%); cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: min(1440px, 100%); max-height: calc(100vh - 96px); width: auto; height: auto; border-radius: var(--radius); box-shadow: 0 12px 48px rgb(0 0 0 / 50%); }
+.lightbox-caption { color: #dfe8eb; font-size: 0.9rem; margin: 0; }
+body.lightbox-open { overflow: hidden; }

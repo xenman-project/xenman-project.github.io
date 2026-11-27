@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System requirements | XenMan documentation</title>
+  <meta name="description" content="Supported XenServer versions, browsers, appliance sizing and network ports.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/system-requirements.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html" aria-current="page">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>System requirements</span></p>
+      <h1>System requirements</h1>
+      <p>This article lists the requirements for running XenMan and for the systems it manages.</p>
+
+<h2 id="managed-systems">Managed systems</h2>
+<ul>
+  <li>XenServer 8 or XCP-ng 8. XenMan is developed and tested on XenServer 8.4.</li>
+  <li>A user account on the pool with full administrative rights, typically <code>root</code>.</li>
+</ul>
+
+<h2 id="browsers">Browsers</h2>
+<p>Use a current version of Microsoft Edge, Google Chrome, Mozilla Firefox or Safari. The browser must allow cookies and WebSocket connections to XenMan.</p>
+
+<h2 id="appliance-sizing">Appliance sizing</h2>
+<table>
+  <thead><tr><th>Resource</th><th>Default</th></tr></thead>
+  <tbody>
+    <tr><td>vCPUs</td><td>2</td></tr>
+    <tr><td>Memory</td><td>2 GB</td></tr>
+    <tr><td>Disk</td><td>20 GB (about 1.5 GB used after import)</td></tr>
+    <tr><td>Operating system</td><td>Debian 13, minimal</td></tr>
+  </tbody>
+</table>
+<p class="note"><strong>Note:</strong> For the Docker container, plan the same memory. XenMan requires Node.js 24 when you run it without a container.</p>
+
+<h2 id="ports">Network ports</h2>
+<table>
+  <thead><tr><th>Direction</th><th>Port</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td>Browser → XenMan</td><td>443 (appliance) or 3001 (Docker)</td><td>Web interface over HTTPS</td></tr>
+    <tr><td>Browser → XenMan</td><td>80 (appliance) or 3000 (Docker)</td><td>Redirect to HTTPS only</td></tr>
+    <tr><td>XenMan → every host</td><td>443</td><td>XenAPI, consoles, performance data, imports</td></tr>
+    <tr><td>XenMan → pool coordinator</td><td>22</td><td>Optional: VM export over SSH</td></tr>
+    <tr><td>XenMan → mail server</td><td>25, 465 or 587</td><td>Optional: notifications and password resets</td></tr>
+    <tr><td>XenMan → login.microsoftonline.com</td><td>443</td><td>Optional: Microsoft Entra ID sign-in</td></tr>
+  </tbody>
+</table>
+<p class="important"><strong>Important:</strong> XenMan must reach every host of a pool directly, not only the coordinator. XenServer serves consoles and performance data from each host. For pools behind NAT, see <a href="advanced.html#nat">Pools at other sites</a>.</p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="whats-new.html"><span>Previous topic</span>What's new</a>
+        <a class="next" href="install.html"><span>Next topic</span>Install XenMan</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#managed-systems">Managed systems</a></li><li><a href="#browsers">Browsers</a></li><li><a href="#appliance-sizing">Appliance sizing</a></li><li><a href="#ports">Network ports</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

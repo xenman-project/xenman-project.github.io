@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Users and roles | XenMan documentation</title>
+  <meta name="description" content="Roles and permissions, pool access, two-factor sign-in and Microsoft Entra ID.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/users-and-roles.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html" aria-current="page">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Users and roles</span></p>
+      <h1>Users and roles</h1>
+      <p>XenMan controls access with three roles. Administrators manage users under <strong>Users</strong>.</p>
+
+<h2 id="roles">Roles and permissions</h2>
+<table>
+  <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
+  <tbody>
+    <tr><td>Administrator</td><td>All tasks, including pools, hosts, storage, networking, updates, licensing, users and settings.</td></tr>
+    <tr><td>Operator</td><td>VM tasks on the assigned pools: create, import, start, stop, migrate, snapshot, console and snapshot schedules.</td></tr>
+    <tr><td>Viewer</td><td>Read-only access to the assigned pools.</td></tr>
+  </tbody>
+</table>
+<p>Operators and viewers see only the pools that an administrator assigns to them under <strong>Users</strong>.</p>
+
+<h2 id="add-user">Add a user</h2>
+<p>To add a user:</p>
+<ol class="steps">
+  <li>Go to <strong>Users</strong> and select <strong>Add User</strong>.</li>
+  <li>Enter the user name and select the role.</li>
+  <li>For operators and viewers, select the pools.</li>
+  <li>Set a password, or send an invitation by email if mail is configured.</li>
+</ol>
+
+<h2 id="two-factor">Two-factor sign-in</h2>
+<p>Users can protect their account with a time-based code from an authenticator app, such as Microsoft Authenticator or Google Authenticator.</p>
+<p>To turn on two-factor sign-in for your account:</p>
+<ol class="steps">
+  <li>Go to <strong>Settings &gt; Account</strong>.</li>
+  <li>Turn on two-factor sign-in and scan the QR code with your authenticator app.</li>
+  <li>Enter the code from the app to confirm.</li>
+  <li>Store the ten recovery codes in a safe place. Each code works once.</li>
+</ol>
+<p>Administrators can require two-factor sign-in for administrators or for all users under <strong>Settings &gt; Security</strong>, and can reset it for a user under <strong>Users</strong>.</p>
+
+<h2 id="entra-id">Sign in with Microsoft Entra ID</h2>
+<p>Users can sign in with their Microsoft account. XenMan takes the role from Entra ID app roles at every sign-in. MFA and Conditional Access are handled by Entra ID.</p>
+<p>To set up Entra ID sign-in:</p>
+<ol class="steps">
+  <li>In the Microsoft Entra admin center, create an app registration with platform <strong>Web</strong> and the redirect URI <code>https://&lt;xenman address&gt;/api/auth/sso/callback</code>.</li>
+  <li>Create a client secret and copy its value.</li>
+  <li>Create the app roles <code>XenMan.Admin</code>, <code>XenMan.Operator</code> and <code>XenMan.Viewer</code>.</li>
+  <li>In <strong>Enterprise applications</strong>, assign users or groups to the roles. Set <strong>Assignment required</strong> to <strong>Yes</strong>.</li>
+  <li>In XenMan, go to <strong>Settings &gt; Security &gt; Microsoft Entra ID</strong>. Enter the tenant ID, client ID, client secret and XenMan's address, then turn it on. Use <strong>Test</strong> to check the connection.</li>
+</ol>
+<p class="note"><strong>Note:</strong> Users without an app role cannot sign in. Pool access for operators and viewers is still set in XenMan under <strong>Users</strong>.</p>
+<p>Optionally, allow password sign-in for administrators only. This keeps a way in when Entra ID cannot be reached.</p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="updates.html"><span>Previous topic</span>Update hosts and XenMan</a>
+        <a class="next" href="security.html"><span>Next topic</span>Security</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#roles">Roles and permissions</a></li><li><a href="#add-user">Add a user</a></li><li><a href="#two-factor">Two-factor sign-in</a></li><li><a href="#entra-id">Sign in with Microsoft Entra ID</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

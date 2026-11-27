@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install XenMan | XenMan documentation</title>
+  <meta name="description" content="Install XenMan as a XenServer appliance or as a Docker container.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/install.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html" aria-current="page">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Install XenMan</span></p>
+      <h1>Install XenMan</h1>
+      <p>You can install XenMan as an appliance on your XenServer pool or as a Docker container. The appliance is recommended: it includes signed in-place updates and automatic Debian security updates.</p>
+
+<h2 id="appliance">Install the appliance</h2>
+<p>To install the appliance:</p>
+<ol class="steps">
+  <li>Download <code>xenman-appliance-v1.0.5.xva</code> from the <a href="https://github.com/xenman-project/xenman/releases/latest">latest release</a>. Compare its SHA-256 checksum with the value in the release notes.</li>
+  <li>Import the file into your pool, either in XenCenter with <strong>File &gt; Import</strong> or on the command line:<br><code>xe vm-import filename=xenman-appliance-v1.0.5.xva</code></li>
+  <li>Start the VM. The console shows the IP address the appliance received by DHCP.</li>
+  <li>Open <code>https://&lt;address&gt;/</code> in your browser and accept the self-signed certificate once.</li>
+  <li>Sign in as <code>admin</code> with the password <code>admin</code>. XenMan asks for a new password before anything else opens.</li>
+</ol>
+<p class="note"><strong>Note:</strong> Without DHCP, sign in on the VM console as <code>root</code> with the password <code>xenman</code>. You must change the password, then a menu opens where you configure the network.</p>
+
+<h3 id="appliance-console">Appliance console menu</h3>
+<p>The console menu shows and configures the network, tests connectivity, restarts XenMan or the appliance, resets an administrator's password or two-factor sign-in, and switches SSH access on or off. SSH is off by default.</p>
+
+<h3 id="appliance-network">Change the network settings</h3>
+<p>In XenMan, go to <strong>Settings &gt; Appliance &gt; Network</strong> to set DHCP or a static address, DNS servers and the host name. Changes are applied on probation: if you do not confirm the new address within 90 seconds, the previous settings return.</p>
+
+<h2 id="docker">Install with Docker</h2>
+<p>To run XenMan as a container:</p>
+<ol class="steps">
+  <li>Download the Compose file:<br><code>curl -O https://raw.githubusercontent.com/xenman-project/xenman/main/docker-compose.yml</code></li>
+  <li>Start the container:<br><code>docker compose up -d</code></li>
+  <li>Open <code>https://&lt;host&gt;:3001</code> and sign in as <code>admin</code> / <code>admin</code>. Choose a new password when prompted.</li>
+</ol>
+<p>Data persists in the <code>xen-data</code> volume. To pin a release, use an image tag such as <code>ghcr.io/xenman-project/xenman:v1.0.5</code>.</p>
+
+<h2 id="next-steps">Next steps</h2>
+<p>Add your first pool as described in <a href="quick-start.html">Quick start</a>.</p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="system-requirements.html"><span>Previous topic</span>System requirements</a>
+        <a class="next" href="quick-start.html"><span>Next topic</span>Quick start</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#appliance">Install the appliance</a></li><li><a href="#docker">Install with Docker</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick start | XenMan documentation</title>
+  <meta name="description" content="Connect XenMan to your first pool and verify the host certificate.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/quick-start.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html" aria-current="page">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Quick start</span></p>
+      <h1>Quick start</h1>
+      <p>This article describes how to connect XenMan to a pool and what to do after the first sign-in.</p>
+
+<h2 id="add-pool">Add a pool</h2>
+<p>To add a pool:</p>
+<ol class="steps">
+  <li>Go to <strong>Settings &gt; Pools</strong> and select <strong>Add Host</strong>.</li>
+  <li>Enter a name, the address of the pool coordinator, the port (443) and the credentials of a pool administrator, typically <code>root</code>.</li>
+  <li>Select <strong>Save</strong>. XenMan shows the SHA-256 fingerprint of the coordinator's certificate.</li>
+  <li>Compare the fingerprint with the value on the host, then trust the certificate. On the host, run:<br><code>openssl x509 -noout -fingerprint -sha256 -in /etc/xensource/xapi-ssl.pem</code></li>
+</ol>
+<p>XenMan learns the other hosts of the pool and their certificates over this verified connection. The pool appears in the navigation on the left.</p>
+<p class="important"><strong>Important:</strong> Do not trust a fingerprint you have not compared. XenMan connects only to hosts that present a trusted certificate.</p>
+
+<h2 id="after-sign-in">After the first sign-in</h2>
+<p>We recommend the following steps:</p>
+<ul>
+  <li><strong>Mail</strong> – configure an SMTP server under <strong>Settings &gt; Mail &amp; Logging</strong> for notifications and password resets.</li>
+  <li><strong>Users</strong> – create accounts for your team under <strong>Users</strong> and assign roles and pools. See <a href="users-and-roles.html">Users and roles</a>.</li>
+  <li><strong>Two-factor sign-in</strong> – turn it on for your account under <strong>Settings &gt; Account</strong>.</li>
+  <li><strong>Certificate</strong> – replace the self-signed certificate under <strong>Settings &gt; Appliance &gt; HTTPS Certificate</strong>. See <a href="security.html#https">HTTPS certificate</a>.</li>
+</ul>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="install.html"><span>Previous topic</span>Install XenMan</a>
+        <a class="next" href="manage-vms.html"><span>Next topic</span>Manage VMs</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#add-pool">Add a pool</a></li><li><a href="#after-sign-in">After the first sign-in</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

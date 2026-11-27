@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage VMs | XenMan documentation</title>
+  <meta name="description" content="Console access, actions on several VMs and snapshot schedules.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/manage-vms.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html" aria-current="page">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Manage VMs</span></p>
+      <h1>Manage VMs</h1>
+      <p>This article describes common VM tasks in XenMan. Operators and administrators can perform them. Viewers can see VMs but cannot change them.</p>
+
+<h2 id="console">Open the console</h2>
+<p>To open a VM's console, select the VM and select <strong>Console</strong>. The console opens in the browser and supports keyboard shortcuts such as Ctrl+Alt+Del and pasting text from the clipboard. For Windows VMs, you can also download an RDP file.</p>
+
+<h2 id="several-vms">Start, shut down or reboot several VMs</h2>
+<p>To act on several VMs at once:</p>
+<ol class="steps">
+  <li>Select a pool or a host, then the <strong>VMs</strong> tab.</li>
+  <li>Select the check boxes of the VMs, or the check box in the header for all VMs.</li>
+  <li>Select <strong>Start</strong>, <strong>Shut Down</strong> or <strong>Reboot</strong>. The buttons show how many of the selected VMs the action applies to.</li>
+  <li>Confirm the action. For a shutdown, you can select <strong>Force shut down</strong>.</li>
+</ol>
+<figure><img src="img/bulk-vms.png" alt="Several VMs selected in the VMs tab" loading="lazy"><figcaption>Several VMs selected in the VMs tab</figcaption></figure>
+
+<h2 id="snapshot-schedules">Snapshot schedules</h2>
+<p>A snapshot schedule takes snapshots of its VMs hourly, daily or weekly and keeps the most recent 1 to 10. A VM can belong to one schedule only.</p>
+<p>To create a snapshot schedule:</p>
+<ol class="steps">
+  <li>Select the pool, then the <strong>Snapshot Schedules</strong> tab.</li>
+  <li>Select <strong>New Schedule</strong>.</li>
+  <li>Enter a name and select the VMs.</li>
+  <li>Select the snapshot type: <strong>Disk only snapshot</strong>, or <strong>Disk and memory snapshot</strong> where your license allows it.</li>
+  <li>Select the frequency and the time. Times are in the pool coordinator's local time.</li>
+  <li>Select how many snapshots to keep.</li>
+  <li>Optionally, turn on <strong>Take the first snapshots now</strong>, then select <strong>Create Schedule</strong>.</li>
+</ol>
+<figure><img src="img/snapshot-schedules.png" alt="The Snapshot Schedules tab" loading="lazy"><figcaption>The Snapshot Schedules tab</figcaption></figure>
+<p class="note"><strong>Note:</strong> Snapshot schedules require a XenServer license that includes them. Without it, XenMan says so and does not offer the action.</p>
+<p>The tab lists each schedule with its VMs, the next run in pool time and your local time, and the result of the last run. Use the buttons of a schedule to edit, disable, run it now or delete it. A VM's <strong>Snapshots</strong> tab shows the schedule it belongs to.</p>
+
+<h2 id="vm-tools">VM Tools details</h2>
+<p>The overview of a VM shows the virtualization mode and state, and the versions of the XenServer VM Tools Management Agent and drivers. Use it to check whether a VM runs current tools.</p>
+<figure><img src="img/vm-tools.png" alt="Virtualization and VM Tools in a VM's overview" loading="lazy"><figcaption>Virtualization and VM Tools in a VM's overview</figcaption></figure>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="quick-start.html"><span>Previous topic</span>Quick start</a>
+        <a class="next" href="updates.html"><span>Next topic</span>Update hosts and XenMan</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#console">Open the console</a></li><li><a href="#several-vms">Start, shut down or reboot several VMs</a></li><li><a href="#snapshot-schedules">Snapshot schedules</a></li><li><a href="#vm-tools">VM Tools details</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advanced configuration | XenMan documentation</title>
+  <meta name="description" content="Pools at other sites behind NAT, and consoles behind a reverse proxy such as NetScaler.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/advanced.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html" aria-current="page">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Advanced configuration</span></p>
+      <h1>Advanced configuration</h1>
+      <p>This article describes configurations for pools at other sites and for XenMan behind a reverse proxy.</p>
+
+<h2 id="nat">Pools at other sites</h2>
+<p>XenMan can manage a pool that it reaches only through NAT, for example a firewall's virtual IP in front of a pool at another site. Without further configuration, consoles, performance graphs, imports and SSH exports do not work, because XenServer provides them at each host's own management address. XenCenter has the same limitation.</p>
+<p>To make these features work:</p>
+<ol class="steps">
+  <li>When you add the pool, or later under <strong>Settings &gt; Pools &gt; Edit</strong>, turn on <strong>Hosts are behind NAT</strong>.</li>
+  <li>For each host, enter the address at which XenMan reaches it. Use either an address per host with port 443 forwarded, or one address with a port per host, such as <code>203.0.113.10:4431</code>.</li>
+  <li>Save the settings.</li>
+</ol>
+<p class="important"><strong>Important:</strong> Every host must be reachable, and the firewall must pass TLS through unchanged. XenMan checks every host's certificate as usual.</p>
+
+<h2 id="reverse-proxy">Consoles behind a reverse proxy</h2>
+<p>When XenMan runs behind a reverse proxy such as NetScaler, configure the proxy as follows:</p>
+<ul>
+  <li>Enable WebSocket in the HTTP profile of the virtual server.</li>
+  <li>Do not apply compression, App Firewall or bot checks to <code>/api/vnc-proxy</code>.</li>
+  <li>Use a TCP profile with a large window and SACK, and turn off Nagle.</li>
+  <li>Set client and server idle timeouts of at least a few minutes.</li>
+</ul>
+<p>Start XenMan with <code>XENMAN_TRUST_PROXY=1</code> so that it takes the client address and <code>X-Forwarded-Proto: https</code> from the proxy. The proxy must set both headers.</p>
+<p>To compare console performance, open <strong>View &gt; Connection info</strong> in the console. It shows frames per second, data rate and encoding.</p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="security.html"><span>Previous topic</span>Security</a>
+        <span></span>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#nat">Pools at other sites</a></li><li><a href="#reverse-proxy">Consoles behind a reverse proxy</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

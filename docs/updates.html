@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update hosts and XenMan | XenMan documentation</title>
+  <meta name="description" content="Install XenServer updates on a pool, configure the update channel and update XenMan itself.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/updates.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html" aria-current="page">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>Update hosts and XenMan</span></p>
+      <h1>Update hosts and XenMan</h1>
+      <p>This article describes how to update the XenServer hosts of a pool and how to keep XenMan itself up to date.</p>
+
+<h2 id="update-hosts">Update XenServer hosts</h2>
+<p>XenMan updates the hosts of a pool one at a time. Before a host is updated, its VMs are moved to other hosts. Afterwards they are moved back. Workload Balancing is paused during the update. Only administrators can install updates.</p>
+<p>To install updates:</p>
+<ol class="steps">
+  <li>Select the pool, then the <strong>Updates</strong> tab.</li>
+  <li>Select <strong>Check for Updates</strong> to synchronize with the update channel.</li>
+  <li>Select <strong>Install Updates</strong>, review the plan and start it.</li>
+</ol>
+<p>The progress appears in the tab and in Recent Tasks. When the update finishes, or when it needs an administrator, XenMan sends an email if mail is configured.</p>
+<p class="note"><strong>Note:</strong> On a pool with one host, VMs cannot be moved away. Turn on <strong>Shut down running VMs and start them again after the update</strong> in the dialog. VMs that do not shut down within 10 minutes are forced off.</p>
+
+<h2 id="configure-updates">Configure updates</h2>
+<p>To set the update channel and synchronization for a pool:</p>
+<ol class="steps">
+  <li>Select the pool, then the <strong>Updates</strong> tab.</li>
+  <li>Select <strong>Configure Updates</strong>.</li>
+  <li>Select the update channel: <strong>Normal</strong> or <strong>Early Access</strong>.</li>
+  <li>Optionally, turn on automatic synchronization, daily or weekly on a chosen day.</li>
+  <li>Optionally, enter a proxy server for the synchronization, then select <strong>Save</strong>.</li>
+</ol>
+<figure><img src="img/configure-updates.png" alt="The Configure Updates dialog" loading="lazy"><figcaption>The Configure Updates dialog</figcaption></figure>
+
+<h2 id="update-xenman">Update the XenMan appliance</h2>
+<p>XenMan releases are published as signed update packages (<code>.xenup</code>). The appliance verifies the signature before it installs a package.</p>
+<p>To update the appliance:</p>
+<ol class="steps">
+  <li>Download <code>xenman-v&lt;version&gt;.xenup</code> from the <a href="https://github.com/xenman-project/xenman/releases/latest">latest release</a>.</li>
+  <li>In XenMan, go to <strong>Settings &gt; Appliance</strong> and select <strong>Upload update package</strong>.</li>
+  <li>Select the file and confirm the installation. XenMan restarts and reconnects your browser.</li>
+</ol>
+<p>Debian security updates are installed automatically in a maintenance window that you set under <strong>Settings &gt; Appliance</strong>.</p>
+
+<h2 id="update-docker">Update the Docker container</h2>
+<p>Pull the new image and recreate the container:<br><code>docker compose pull &amp;&amp; docker compose up -d</code></p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="manage-vms.html"><span>Previous topic</span>Manage VMs</a>
+        <a class="next" href="users-and-roles.html"><span>Next topic</span>Users and roles</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#update-hosts">Update XenServer hosts</a></li><li><a href="#configure-updates">Configure updates</a></li><li><a href="#update-xenman">Update the XenMan appliance</a></li><li><a href="#update-docker">Update the Docker container</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

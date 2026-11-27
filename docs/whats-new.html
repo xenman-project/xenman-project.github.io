@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What's new | XenMan documentation</title>
+  <meta name="description" content="New features and fixes in XenMan releases.">
+  <link rel="canonical" href="https://xenman-project.github.io/docs/whats-new.html">
+  <meta name="theme-color" content="#0b3a47">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../" aria-label="XenMan home"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+      <nav class="nav" aria-label="Site">
+        <a href="../">Home</a>
+        <a href="./" aria-current="false">Documentation</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a class="nav-github" href="https://github.com/xenman-project/xenman">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap doc-layout">
+    <aside class="doc-nav">
+      <details open>
+        <summary>XenMan 1.0.5</summary>
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="whats-new.html" aria-current="page">What's new</a></li>
+          <li><a href="system-requirements.html">System requirements</a></li>
+          <li><a href="install.html">Install</a></li>
+          <li><a href="quick-start.html">Quick start</a></li>
+          <li><a href="manage-vms.html">Manage VMs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="users-and-roles.html">Users and roles</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="advanced.html">Advanced configuration</a></li>
+        </ul>
+      </details>
+    </aside>
+
+    <main class="doc-main" id="content">
+      <p class="breadcrumbs"><a href="../">Home</a> / <a href="./">Documentation</a> / <span>What's new</span></p>
+      <h1>What's new</h1>
+      <p>This article describes the new features and fixes in recent XenMan releases. For the complete list, see the <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">changelog</a>.</p>
+
+<h2 id="v1-0-5">XenMan 1.0.5</h2>
+<p class="meta">Released November 27, 2026 · Beta</p>
+
+<h3 id="snapshot-schedules">Snapshot schedules</h3>
+<p>You can now take VM snapshots on a schedule: hourly, daily or weekly, keeping 1 to 10 snapshots per VM. For more information, see <a href="manage-vms.html#snapshot-schedules">Snapshot schedules</a>.</p>
+<figure><img src="img/snapshot-schedules.png" alt="Snapshot schedules of a pool" loading="lazy"><figcaption>Snapshot schedules of a pool</figcaption></figure>
+
+<h3 id="recent-tasks">Recent Tasks</h3>
+<p>A Recent Tasks panel is docked at the bottom of every view. It lists running and finished tasks of the last 24 hours, including tasks started by XenCenter and other clients.</p>
+
+<h3 id="configure-updates">Configure Updates</h3>
+<p>You can now set the update channel, automatic synchronization and a proxy server per pool. For more information, see <a href="updates.html#configure-updates">Configure updates</a>.</p>
+
+<h3 id="bulk-vm-actions">Bulk VM actions</h3>
+<p>You can now start, shut down or reboot several VMs at once from the <strong>VMs</strong> tab of a pool or host.</p>
+
+<h3 id="vm-tools">VM Tools details</h3>
+<p>The VM overview shows the virtualization mode and the versions of the XenServer VM Tools and drivers.</p>
+
+<h3 id="entra-id">Microsoft Entra ID sign-in</h3>
+<p>Users can sign in with their Microsoft account. Their role comes from Entra ID app roles, and MFA is handled by Entra ID. For more information, see <a href="users-and-roles.html#entra-id">Sign in with Microsoft Entra ID</a>.</p>
+
+<h3 id="single-host-updates">Updates on single-host pools</h3>
+<p>On a pool with one host, the update can shut down running VMs and start them again afterwards.</p>
+
+<h3 id="security-1-0-5">Security</h3>
+<p>This release includes hardening from a security review. The XenServer session stays on the server, host restart and shutdown are restricted to administrators, and requests from other sites are refused.</p>
+
+<h2 id="v1-0-4">XenMan 1.0.4</h2>
+<p class="meta">Released November 16, 2026 · Beta</p>
+<h3 id="nat">Pools behind NAT</h3>
+<p>You can now manage pools at other sites that are reached through NAT, including consoles and performance graphs. For more information, see <a href="advanced.html#nat">Pools at other sites</a>.</p>
+<h3 id="two-factor">Two-factor sign-in</h3>
+<p>Users can protect their account with an authenticator app. Administrators can require it. For more information, see <a href="users-and-roles.html#two-factor">Two-factor sign-in</a>.</p>
+<h3 id="pvs">PVS-Accelerator</h3>
+<p>You can now manage PVS read caching per VM and the cache per PVS site and server.</p>
+<h3 id="iscsi-scan">iSCSI target scan</h3>
+<p>When you create an iSCSI SR, XenMan lists the target's IQNs and LUNs, so you no longer type them.</p>
+<h3 id="new-coordinator">New pool coordinator</h3>
+<p>When you put the pool coordinator into maintenance mode, XenMan offers a new coordinator, as XenCenter does.</p>
+      <nav class="doc-pager" aria-label="Topic navigation">
+        <a class="prev" href="./"><span>Previous topic</span>XenMan overview</a>
+        <a class="next" href="system-requirements.html"><span>Next topic</span>System requirements</a>
+      </nav>
+    </main>
+
+    <nav class="doc-toc" aria-label="In this article"><p class="doc-toc-title">In this article</p><ul><li><a href="#v1-0-5">XenMan 1.0.5</a></li><li><a href="#v1-0-4">XenMan 1.0.4</a></li></ul></nav>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="../"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>xenman</span></a>
+        <p class="small">Documentation for XenMan 1.0.5. Licensed under MIT with Commons Clause. See <a href="https://github.com/xenman-project/xenman/blob/main/LICENSE">LICENSE</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://github.com/xenman-project/xenman">Source code</a>
+        <a href="https://github.com/xenman-project/xenman/releases">Releases</a>
+        <a href="https://github.com/xenman-project/xenman/issues">Issues</a>
+        <a href="https://github.com/xenman-project/xenman/blob/main/CHANGELOG.md">Changelog</a>
+      </nav>
+      <p class="small trademark">XenMan is an independent project and is not affiliated with, endorsed by or sponsored by Cloud Software Group, Inc. or Citrix. Citrix, XenServer and XenCenter are trademarks of Cloud Software Group, Inc. or its subsidiaries. Xen is a trademark of the Linux Foundation.</p>
+    </div>
+  </footer>
+  <script>if (matchMedia("(max-width: 800px)").matches) document.querySelector(".doc-nav details").open = false;</script>
+</body>
+</html>

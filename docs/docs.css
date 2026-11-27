@@ -1,0 +1,88 @@
+/* The documentation: navigation left, the article on a card, "In this article"
+   right -- on top of the site's style.css (colours, top bar, footer). */
+
+.docs .nav a[aria-current="page"] { color: var(--on-petrol); background: rgb(255 255 255 / 12%); }
+
+.doc-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 200px;
+  gap: 32px;
+  align-items: start;
+  padding: 32px 0 56px;
+}
+
+/* Navigation */
+.doc-nav { position: sticky; top: 72px; }
+.doc-nav summary {
+  font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; padding: 4px 0 8px; list-style: none;
+}
+.doc-nav summary::-webkit-details-marker { display: none; }
+.doc-nav ul { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+.doc-nav a {
+  display: block; padding: 6px 12px; margin-left: -1px; border-left: 2px solid transparent;
+  color: var(--text); text-decoration: none; font-size: 0.925rem;
+}
+.doc-nav a:hover { color: var(--petrol-600); }
+.doc-nav a[aria-current="page"] { border-left-color: var(--petrol-600); color: var(--petrol-600); font-weight: 600; }
+
+/* Article */
+.doc-main {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 32px 40px 24px; min-width: 0;
+}
+.breadcrumbs { margin: 0 0 8px; font-size: 0.85rem; color: var(--muted); }
+.breadcrumbs a { color: var(--muted); }
+.doc-main h1 { font-size: 2rem; line-height: 1.25; margin: 0 0 16px; }
+.doc-main h2 { font-size: 1.4rem; margin: 36px 0 12px; padding-top: 4px; border-top: 1px solid var(--border); padding-top: 24px; }
+.doc-main h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+.doc-main p, .doc-main li { max-width: 72ch; }
+.doc-main ul, .doc-main ol { padding-left: 1.4em; }
+.doc-main li { margin: 4px 0; }
+.doc-main code { background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+.doc-main .meta { color: var(--muted); font-size: 0.9rem; margin-top: -4px; }
+
+ol.steps li { margin: 8px 0; padding-left: 4px; }
+
+.note, .important {
+  border: 1px solid var(--border); border-left: 4px solid var(--petrol-500);
+  background: var(--petrol-100); border-radius: var(--radius); padding: 10px 14px; margin: 16px 0;
+}
+.important { border-left-color: #c77d0a; background: color-mix(in srgb, #c77d0a 10%, var(--card)); }
+
+.doc-main table { border-collapse: collapse; width: 100%; margin: 12px 0 20px; font-size: 0.95rem; }
+.doc-main th, .doc-main td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.doc-main th { background: var(--code-bg); font-weight: 600; }
+
+.doc-main figure { margin: 16px 0 24px; }
+.doc-main figure img { border: 1px solid var(--border); border-radius: var(--radius); }
+.doc-main figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+
+/* Previous and next topic */
+.doc-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+.doc-pager a { text-decoration: none; display: flex; flex-direction: column; font-weight: 600; }
+.doc-pager a span { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+.doc-pager .next { text-align: right; margin-left: auto; }
+
+/* In this article */
+.doc-toc { position: sticky; top: 72px; font-size: 0.875rem; }
+.doc-toc-title { font-weight: 600; margin: 4px 0 8px; }
+.doc-toc ul { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+.doc-toc a { display: block; padding: 4px 12px; color: var(--muted); text-decoration: none; }
+.doc-toc a:hover { color: var(--petrol-600); }
+
+@media (max-width: 1100px) {
+  .doc-layout { grid-template-columns: 200px minmax(0, 1fr); }
+  .doc-toc { display: none; }
+}
+
+@media (max-width: 800px) {
+  .doc-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 16px; }
+  .doc-nav { position: static; }
+  .doc-nav details { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 12px; }
+  .doc-nav summary { padding: 4px 0; }
+  .doc-nav summary::after { content: " ▾"; }
+  .doc-main { padding: 20px 16px; }
+  .doc-main h1 { font-size: 1.6rem; }
+  .doc-main table { display: block; overflow-x: auto; }
+}
